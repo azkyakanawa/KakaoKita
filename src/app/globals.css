@@ -1,0 +1,86 @@
+:root {
+  --coklat: #3E2A1E;
+  --aksen: #B5651D;
+  --hijau: #2E7D32;
+  --merah: #B3261E;
+  --krem: #F7EFE5;
+  --putih: #FFFFFF;
+  --garis: #E3D5C4;
+  --teks: #2B1D14;
+  --abu: #6B5B4E;
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--krem);
+  color: var(--teks);
+  line-height: 1.5;
+}
+a { color: var(--aksen); }
+h1, h2, h3 { color: var(--coklat); line-height: 1.25; margin: 0 0 .5rem; }
+h1 { font-size: 1.7rem; } h2 { font-size: 1.3rem; } h3 { font-size: 1.1rem; }
+p { margin: 0 0 .75rem; }
+.muted { color: var(--abu); font-size: .92rem; }
+.container { width: 100%; max-width: 1000px; margin: 0 auto; padding: 16px; }
+.narrow { max-width: 460px; }
+
+/* Header aplikasi */
+.topbar { background: var(--coklat); color: #fff; padding: 10px 16px; display: flex; gap: 12px;
+  align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.brand { font-weight: 700; font-size: 1.2rem; color: #fff; text-decoration: none; }
+.topbar .who { font-size: .9rem; opacity: .9; }
+.nav { background: var(--putih); border-bottom: 1px solid var(--garis); display: flex; gap: 4px;
+  overflow-x: auto; padding: 6px 12px; }
+.nav a { padding: 8px 12px; border-radius: 8px; text-decoration: none; color: var(--coklat);
+  white-space: nowrap; font-weight: 500; }
+.nav a.active { background: var(--coklat); color: #fff; }
+
+/* Komponen */
+.card { background: var(--putih); border: 1px solid var(--garis); border-radius: 14px;
+  padding: 16px; margin-bottom: 16px; }
+.grid { display: grid; gap: 12px; }
+.grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.stat { font-size: 1.6rem; font-weight: 700; color: var(--coklat); }
+.btn { display: inline-block; padding: 12px 18px; border: 0; border-radius: 10px; font-size: 1rem;
+  font-weight: 600; background: var(--aksen); color: #fff; cursor: pointer; text-decoration: none;
+  text-align: center; }
+.btn:hover { filter: brightness(.95); }
+.btn.secondary { background: transparent; color: var(--coklat); border: 2px solid var(--coklat); }
+.btn.danger { background: var(--merah); }
+.btn.small { padding: 6px 10px; font-size: .85rem; }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+.field label { font-weight: 600; font-size: .95rem; }
+.input, select.input, textarea.input { padding: 11px 12px; font-size: 1rem; border: 1.5px solid var(--garis);
+  border-radius: 10px; background: #fff; color: var(--teks); width: 100%; font-family: inherit; }
+.input:focus { outline: 2px solid var(--aksen); border-color: var(--aksen); }
+.row { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.check { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.check input { width: 20px; height: 20px; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--garis); vertical-align: top; }
+th { background: #FBF6EF; color: var(--coklat); white-space: nowrap; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: .75rem; font-weight: 600;
+  background: #FFF3CD; color: #7A5B00; }
+.badge.ok { background: #DDF2DE; color: #1B5E20; }
+.badge.off { background: #F3D9D7; color: #8A1C15; }
+.alert { padding: 10px 12px; border-radius: 10px; margin-bottom: 12px; background: #F3D9D7; color: #8A1C15; }
+.alert.info { background: #FFF3CD; color: #6B4E00; }
+.alert.success { background: #DDF2DE; color: #1B5E20; }
+.center { text-align: center; }
+
+/* Landing page */
+.hero { background: var(--coklat); color: #fff; padding: 48px 16px 40px; text-align: center; }
+.hero h1 { color: #fff; font-size: 2.1rem; }
+.hero p { max-width: 620px; margin: 0 auto 1rem; opacity: .92; }
+.hero .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+.hero .btn.secondary { color: #fff; border-color: #fff; }
+.section { padding: 28px 0; }
+.footer { text-align: center; padding: 24px 16px; color: var(--abu); font-size: .9rem; }
+.chart svg { width: 100%; height: auto; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: .9rem; margin-top: 4px; }
+.dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; }

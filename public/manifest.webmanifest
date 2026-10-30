@@ -1,0 +1,17 @@
+{
+  "name": "KakaoKita - Koperasi Kakao Digital",
+  "short_name": "KakaoKita",
+  "description": "Pantau harga, catat panen, dan hitung penjualan kolektif kelompok tani kakao.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7EFE5",
+  "theme_color": "#3E2A1E",
+  "lang": "id",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
