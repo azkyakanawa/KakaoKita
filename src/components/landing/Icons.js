@@ -90,3 +90,12 @@ export const IconPod = (p) => (
     <path d="M24 5c4 5 6 12 6 19s-2 14-6 19" fill="none" stroke="#7A3A12" strokeWidth="2.4" />
   </svg>
 );
+export const IconLock = (p) => (
+  <svg {...base} {...p} fill="currentColor" stroke="none"><path d="M7 10V7.5a5 5 0 0 1 10 0V10h.5A2.5 2.5 0 0 1 20 12.5v7a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 19.5v-7A2.5 2.5 0 0 1 6.5 10zm2.2 0h5.6V7.5a2.8 2.8 0 0 0-5.6 0zM12 14a1.6 1.6 0 0 0-.9 2.9V18.5h1.8v-1.6A1.6 1.6 0 0 0 12 14z" fillRule="evenodd" /></svg>
+);
+export const IconEye = (p) => (
+  <svg {...base} {...p}><path d="M2 12s3.7-7 10-7 10 7 10 7-3.7 7-10 7S2 12 2 12z" /><circle cx="12" cy="12" r="3.2" /></svg>
+);
+export const IconEyeOff = (p) => (
+  <svg {...base} {...p}><path d="M3 3l18 18" strokeWidth={2.6} /><path d="M10.6 5.1A10 10 0 0 1 12 5c6.3 0 10 7 10 7a17 17 0 0 1-3.2 4" /><path d="M6.3 6.6C3.6 8.4 2 12 2 12s3.7 7 10 7c1.5 0 2.9-.4 4.1-1" /><path d="M9.9 9.9a3.2 3.2 0 0 0 4.2 4.2" /></svg>
+);

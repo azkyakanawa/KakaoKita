@@ -3,11 +3,15 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase, configured } from '@/lib/supabase';
+import LandingImage from '@/components/landing/LandingImage';
+import { IconMailFill, IconLock, IconEye, IconEyeOff, IconArrow, IconPod, IconSprout } from '@/components/landing/Icons';
+import './masuk.css';
 
 export default function MasukPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [lihat, setLihat] = useState(false);
   const [msg, setMsg] = useState('');
   const [info, setInfo] = useState('');
   const [loading, setLoading] = useState(false);
@@ -57,28 +61,92 @@ export default function MasukPage() {
   }
 
   return (
-    <div className="container narrow">
-      <h1>Masuk</h1>
-      {!configured && <div className="alert info">Supabase belum dikonfigurasi (.env.local kosong).</div>}
-      {info && <div className="alert success">{info}</div>}
-      <form className="card" onSubmit={submit}>
-        {msg && <div className="alert">{msg}</div>}
-        <div className="field">
-          <label htmlFor="email">Email</label>
-          <input id="email" className="input" type="email" required autoCapitalize="none" autoComplete="email"
-            value={email} onChange={(e) => setEmail(e.target.value)} />
+    <main className="lg-page">
+      {/* ===== Sisi foto (kiri) ===== */}
+      <div className="lg-photo" aria-hidden="true">
+        <LandingImage file="login-foto.jpg" className="lg-photo-img" decor />
+      </div>
+      <div className="lg-shade" aria-hidden="true" />
+
+      <Link href="/" className="lg-logo" aria-label="KakaoKita, kembali ke beranda">
+        <span className="lg-logo-img">
+          <LandingImage file="logo.png" alt="" fallback={<IconPod className="lg-logo-fallback" />} />
+        </span>
+        <span className="lg-logo-text">
+          <strong>Kakao<span>Kita</span></strong>
+          <small>Bersama Petani, Menuju Sejahtera</small>
+        </span>
+      </Link>
+
+      <div className="lg-tagline">
+        <IconSprout className="lg-tagline-icon" />
+        <p>Dukung Petani Kakao,</p>
+        <p className="gold">Bangun Masa Depan Bersama KakaoKita</p>
+        <svg viewBox="0 0 320 30" className="lg-tagline-line" aria-hidden="true" preserveAspectRatio="none">
+          <path d="M2 24C70 6 180 2 318 20" fill="none" stroke="#f2c94c" strokeWidth="2.4" strokeLinecap="round" />
+        </svg>
+      </div>
+      <LandingImage file="login-daun-kiri.png" className="lg-leaf lg-leaf-bl" decor />
+
+      {/* ===== Panel form (kanan) dengan tepi meliuk ===== */}
+      <section className="lg-panel">
+        {/* Tepi bergelombang antara foto dan panel. Ubah path ini bila ingin liukan berbeda. */}
+        <svg className="lg-edge" viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M100 0H46C18 110 82 215 55 335C28 455 96 545 60 665C30 775 76 885 34 1000H100Z" fill="#fcf5ea" />
+        </svg>
+
+        <LandingImage file="login-daun-kanan-atas.png" className="lg-leaf lg-leaf-tr" decor />
+        <LandingImage file="login-daun-kanan-bawah.png" className="lg-leaf lg-leaf-br" decor />
+        <svg className="lg-hills" viewBox="0 0 800 120" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 120V70C140 30 260 20 420 52S690 86 800 40V120Z" fill="#dfe6b8" />
+          <path d="M0 120V92C160 62 300 58 460 82S700 104 800 78V120Z" fill="#b5c76f" />
+        </svg>
+
+        <div className="lg-content">
+          <h1 className="lg-title">Masuk</h1>
+          <p className="lg-sub">
+            Selamat datang kembali di KakaoKita!{' '}<br />Silakan masuk untuk melanjutkan.
+          </p>
+
+          {!configured && <div className="lg-alert info">Supabase belum dikonfigurasi (.env.local kosong).</div>}
+          {info && <div className="lg-alert success" role="status">{info}</div>}
+          {msg && <div className="lg-alert error" role="alert">{msg}</div>}
+
+          <form onSubmit={submit} className="lg-form" noValidate={false}>
+            <label className="lg-field" htmlFor="email">
+              <IconMailFill className="lg-ico" />
+              <input
+                id="email" type="email" required autoCapitalize="none" autoComplete="email"
+                placeholder="Email Anda" value={email} onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+
+            <label className="lg-field" htmlFor="password">
+              <IconLock className="lg-ico" />
+              <input
+                id="password" type={lihat ? 'text' : 'password'} required autoComplete="current-password"
+                placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}
+              />
+              <button
+                type="button" className="lg-eye" onClick={() => setLihat((v) => !v)}
+                aria-label={lihat ? 'Sembunyikan kata sandi' : 'Tampilkan kata sandi'} aria-pressed={lihat}
+              >
+                {lihat ? <IconEye /> : <IconEyeOff />}
+              </button>
+            </label>
+
+            <button type="submit" className="lg-submit" disabled={loading}>
+              <span>{loading ? 'Memproses...' : 'Masuk'}</span>
+              {!loading && <IconArrow />}
+            </button>
+          </form>
+
+          <div className="lg-or"><span>Belum punya akun?</span></div>
+          <Link href="/daftar" className="lg-daftar">Daftar Sekarang</Link>
+
+          <Link href="/" className="lg-back"><IconArrow className="flip" /><span>Kembali ke Beranda</span></Link>
         </div>
-        <div className="field">
-          <label htmlFor="password">Kata sandi</label>
-          <input id="password" className="input" type="password" required autoComplete="current-password"
-            value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <button className="btn" style={{ width: '100%' }} disabled={loading}>
-          {loading ? 'Memproses...' : 'Masuk'}
-        </button>
-      </form>
-      <p className="center">Belum punya akun? <Link href="/daftar">Daftar sebagai petani</Link></p>
-      <p className="center"><Link href="/">Kembali ke beranda</Link></p>
-    </div>
+      </section>
+    </main>
   );
 }

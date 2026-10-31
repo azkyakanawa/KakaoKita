@@ -44,3 +44,18 @@ Ubah nama file di `src/app/page.js`, contoh: `file="hero-bg.jpg"` menjadi `file=
 - Kartu "Harga Kakao Hari Ini" otomatis memakai harga **lokal, kering** terbaru yang diinput admin
   di menu Harga. Persen naik/turun dihitung dari harga pada tanggal sebelumnya.
   Wajib menjalankan `supabase/landing_harga.sql` sekali di Supabase SQL Editor.
+
+## Halaman Masuk (/masuk)
+
+Letakkan juga di `public/images/landing/`:
+
+| Nama file | Dipakai untuk | Ukuran saran | Catatan |
+|---|---|---|---|
+| `login-foto.jpg` | Foto besar di sisi kiri | 1600x1600 atau lebih | JPG. Tepi kanan foto otomatis dipotong meliuk oleh panel form. Taruh objek utama (wajah petani, buah) di sisi kiri atau tengah gambar |
+| `logo.png` | Logo di pil kiri atas | sama dengan landing | Dipakai bersama landing page |
+| `login-daun-kiri.png` | Daun di pojok kiri bawah foto | 600x500 | PNG transparan |
+| `login-daun-kanan-atas.png` | Daun di pojok kanan atas panel | 500x500 | PNG transparan |
+| `login-daun-kanan-bawah.png` | Daun di pojok kanan bawah panel | 400x400 | PNG transparan |
+
+Mengubah liukan foto: di `src/app/masuk/page.js` cari `<svg className="lg-edge"` lalu ubah angka pada `d="..."`.
+Mengubah posisi fokus foto: di `src/app/masuk/masuk.css` ubah `object-position` pada `.lg-photo-img` (misalnya `30% center`).

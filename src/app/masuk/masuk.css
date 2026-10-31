@@ -1,0 +1,189 @@
+/* =====================================================================
+   KakaoKita - Halaman Masuk. Semua kelas diawali "lg-".
+   Desktop: foto kiri + panel kanan. Ponsel (<= 760px): tetap dua kolom, lebih sempit.
+   ===================================================================== */
+.lg-page {
+  --lg-brown: #4a2511;
+  --lg-btn: #5e2f10;
+  --lg-green: #3f7a1f;
+  --lg-cream: #fcf5ea;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: #3a2314;
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--lg-cream);
+  overflow: hidden;
+  isolation: isolate;
+}
+.lg-page *, .lg-page *::before, .lg-page *::after { box-sizing: border-box; }
+.lg-page h1, .lg-page p { margin: 0; color: inherit; }
+.lg-page a { color: inherit; text-decoration: none; }
+.lg-page img { display: block; max-width: 100%; user-select: none; }
+.lg-page :focus-visible { outline: 3px solid #e0861f; outline-offset: 3px; }
+
+/* slot gambar (kotak penanda di mode dev) */
+.lg-page .lp-img-slot { display: grid; place-items: center; width: 100%; height: 100%; min-height: 56px; border: 2px dashed rgba(255,255,255,.7); border-radius: 14px; background: rgba(0,0,0,.18); color: #fff; font-size: 12px; font-weight: 600; text-align: center; padding: 6px; word-break: break-all; }
+.lg-page .lp-img-fallback { display: grid; place-items: center; width: 100%; height: 100%; }
+.lg-page .lp-img-fallback > svg { width: 100%; height: 100%; }
+
+/* ---- Foto ---- */
+.lg-photo {
+  position: absolute; z-index: 0; inset: 0 auto 0 0; width: 62%;
+  background: linear-gradient(135deg, #8db35a 0%, #5d8a3a 45%, #35592a 100%);
+}
+.lg-photo-img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.lg-shade {
+  position: absolute; z-index: 1; left: 0; bottom: 0; width: 62%; height: 42%; pointer-events: none;
+  background: linear-gradient(to top, rgba(43, 24, 10, .72) 0%, rgba(43, 24, 10, .45) 55%, rgba(43, 24, 10, 0) 100%);
+}
+
+/* ---- Logo di atas foto ---- */
+.lg-logo {
+  position: absolute; z-index: 4; left: clamp(20px, 3.4vw, 56px); top: clamp(20px, 3.8vw, 62px);
+  display: flex; align-items: center; gap: 14px; padding: 12px clamp(18px, 2.4vw, 40px) 12px 16px;
+  background: rgba(255, 249, 238, .93); border-radius: 999px; box-shadow: 0 10px 28px rgba(40, 22, 8, .2);
+}
+.lg-logo-img { width: clamp(52px, 5.4vw, 88px); aspect-ratio: 1; flex: none; display: grid; place-items: center; }
+.lg-logo-img img, .lg-logo-fallback { width: 100%; height: 100%; object-fit: contain; }
+.lg-logo-text { display: flex; flex-direction: column; gap: 4px; }
+.lg-logo-text strong { font-size: clamp(26px, 2.7vw, 44px); font-weight: 800; line-height: 1; color: var(--lg-brown); letter-spacing: -.5px; }
+.lg-logo-text strong span { color: var(--lg-green); }
+.lg-logo-text small { font-size: clamp(10px, .95vw, 15px); font-weight: 500; color: var(--lg-brown); white-space: nowrap; }
+
+/* ---- Tagline kiri bawah ---- */
+.lg-tagline { position: absolute; z-index: 4; left: clamp(24px, 4.2vw, 72px); bottom: clamp(36px, 7vh, 90px); width: min(46%, 640px); color: #fff; }
+.lg-tagline-icon { width: clamp(28px, 3vw, 46px); height: clamp(28px, 3vw, 46px); display: block; margin-bottom: 6px; }
+.lg-tagline p { font-size: clamp(20px, 2.2vw, 36px); font-weight: 500; line-height: 1.2; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.35); }
+.lg-page .lg-tagline p.gold { font-size: clamp(24px, 2.9vw, 48px); font-weight: 800; color: #f5c94a; line-height: 1.15; margin-top: 4px; letter-spacing: -.3px; }
+.lg-tagline-line { display: block; width: min(100%, 420px); height: 26px; margin-top: 12px; }
+.lg-leaf { position: absolute; pointer-events: none; height: auto; }
+.lg-leaf-bl { z-index: 3; left: 0; bottom: 0; width: clamp(110px, 16vw, 280px); }
+
+/* ---- Panel kanan ---- */
+.lg-panel {
+  position: relative; z-index: 2; margin-left: auto; width: 46%; min-height: 100%;
+  background: var(--lg-cream); display: flex; align-items: center;
+}
+.lg-edge {
+  position: absolute; top: 0; left: 1px; height: 100%; width: clamp(70px, 8vw, 150px);
+  transform: translateX(-100%); pointer-events: none; display: block;
+  filter: drop-shadow(-8px 0 14px rgba(40, 22, 8, .16));
+  clip-path: inset(0 0 0 -60px); /* bayangan hanya ke arah foto, tidak menodai panel */
+}
+.lg-hills { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: clamp(50px, 8vh, 100px); pointer-events: none; z-index: 0; }
+.lg-leaf-tr { z-index: 1; top: 0; right: 0; width: clamp(110px, 12vw, 210px); }
+.lg-leaf-br { z-index: 1; bottom: 0; right: 0; width: clamp(70px, 8vw, 140px); }
+
+.lg-content {
+  position: relative; z-index: 2; width: min(500px, 82%); margin: 0 auto 0 clamp(24px, 8%, 130px);
+  padding: 48px 0 clamp(80px, 12vh, 130px);
+}
+.lg-title { font-size: clamp(48px, 4.9vw, 84px); font-weight: 800; letter-spacing: -2px; line-height: 1; color: var(--lg-brown) !important; }
+.lg-page .lg-sub { font-size: clamp(15px, 1.2vw, 20px); line-height: 1.55; margin: clamp(18px, 2.4vh, 30px) 0 clamp(26px, 3.6vh, 46px); color: #3a2314; }
+
+.lg-alert { border-radius: 16px; padding: 12px 16px; font-size: 14px; line-height: 1.45; margin-bottom: 16px; border: 1px solid transparent; }
+.lg-alert.error { background: #fdeceb; color: #8f2a1d; border-color: #f2c4bd; }
+.lg-alert.success { background: #eaf4dc; color: #2f5d17; border-color: #cfe3b3; }
+.lg-alert.info { background: #fff1d6; color: #6b4a10; border-color: #f0d9a3; }
+
+.lg-form { display: flex; flex-direction: column; gap: clamp(14px, 2.4vh, 24px); }
+.lg-field {
+  display: flex; align-items: center; gap: 14px; height: clamp(54px, 7.6vh, 76px); padding: 0 clamp(16px, 1.6vw, 26px);
+  background: #fffdf8; border: 1.5px solid #d9cbb8; border-radius: 999px; cursor: text;
+  transition: border-color .15s, box-shadow .15s;
+}
+.lg-field:focus-within { border-color: var(--lg-btn); box-shadow: 0 0 0 4px rgba(94, 47, 16, .12); }
+.lg-ico { width: 26px; height: 26px; flex: none; color: #2b1a10; }
+.lg-field input {
+  flex: 1; min-width: 0; width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0;
+  font: inherit; font-size: clamp(16px, 1.3vw, 21px); color: #2b1a10; box-shadow: none; border-radius: 0; margin: 0;
+}
+.lg-field input::placeholder { color: #8c7c6b; opacity: 1; }
+.lg-field input:-webkit-autofill { -webkit-box-shadow: 0 0 0 40px #fffdf8 inset; -webkit-text-fill-color: #2b1a10; }
+.lg-eye { flex: none; width: 36px; height: 36px; border: 0; background: transparent; color: #2b1a10; cursor: pointer; display: grid; place-items: center; border-radius: 50%; padding: 0; }
+.lg-eye svg { width: 26px; height: 26px; }
+
+.lg-submit {
+  display: flex; align-items: center; justify-content: center; gap: 12px; height: clamp(54px, 7.6vh, 76px); width: 100%;
+  border: 0; border-radius: 999px; background: var(--lg-btn); color: #fff; font: inherit; font-weight: 700;
+  font-size: clamp(17px, 1.45vw, 23px); cursor: pointer; box-shadow: 0 10px 22px rgba(94, 47, 16, .3);
+  transition: transform .15s, box-shadow .15s, opacity .15s; margin-top: 4px;
+}
+.lg-submit svg { width: 24px; height: 24px; }
+.lg-submit:hover:not(:disabled) { transform: translateY(-1px); }
+.lg-submit:disabled { opacity: .75; cursor: wait; }
+
+.lg-or { display: flex; align-items: center; gap: 18px; margin: clamp(18px, 3vh, 34px) 0 clamp(14px, 2.2vh, 24px); font-size: clamp(14px, 1.1vw, 18px); color: #3a2314; }
+.lg-or::before, .lg-or::after { content: ''; flex: 1; height: 1px; background: rgba(94, 47, 16, .35); }
+
+.lg-page .lg-daftar {
+  display: flex; align-items: center; justify-content: center; height: clamp(52px, 7.2vh, 72px); width: 100%;
+  border: 1.5px solid #a08b76; border-radius: 999px; background: rgba(255, 253, 248, .6); color: var(--lg-green);
+  font-weight: 700; font-size: clamp(16px, 1.35vw, 22px); transition: background .15s, transform .15s;
+}
+.lg-page .lg-daftar:hover { background: #fff; transform: translateY(-1px); }
+
+.lg-page .lg-back { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: clamp(22px, 4vh, 44px); font-size: clamp(15px, 1.2vw, 20px); font-weight: 500; color: var(--lg-brown); }
+.lg-back svg { width: 22px; height: 22px; }
+.lg-back .flip { transform: rotate(180deg); }
+.lg-back:hover span { text-decoration: underline; }
+
+/* ---- Tablet sempit ---- */
+@media (max-width: 1000px) {
+  .lg-photo, .lg-shade { width: 56%; }
+  .lg-panel { width: 52%; }
+  .lg-tagline { width: 48%; }
+}
+
+/* ======================= PONSEL ======================= */
+@media (max-width: 760px) {
+  .lg-photo, .lg-shade { width: 56%; }
+  .lg-shade { height: 34%; }
+  .lg-panel { width: 58%; align-items: flex-start; }
+  .lg-edge { width: clamp(60px, 15vw, 100px); }
+
+  .lg-logo { left: 8px; top: 24px; padding: 8px 14px 8px 10px; gap: 8px; }
+  .lg-logo-img { width: 46px; }
+  .lg-logo-text strong { font-size: 22px; }
+  .lg-logo-text small { font-size: 8px; }
+
+  .lg-tagline { left: 12px; bottom: 5vh; width: 40%; }
+  .lg-tagline-icon { width: 26px; height: 26px; }
+  .lg-tagline p { font-size: 11.5px; }
+  .lg-page .lg-tagline p.gold { font-size: 16px; }
+  .lg-tagline-line { height: 18px; margin-top: 8px; }
+
+  .lg-content { width: auto; margin: 0 14px 0 clamp(26px, 9vw, 52px); padding: clamp(150px, 27vh, 250px) 0 110px; }
+  .lg-title { font-size: clamp(34px, 9.4vw, 48px); letter-spacing: -1px; }
+  .lg-page .lg-sub { font-size: 12px; margin: 14px 0 26px; line-height: 1.5; }
+  .lg-sub br { display: none; }
+
+  .lg-form { gap: 12px; }
+  .lg-field { height: 50px; gap: 8px; padding: 0 12px; }
+  .lg-ico { width: 20px; height: 20px; }
+  .lg-field input { font-size: 13.5px; }
+  .lg-eye { width: 26px; height: 26px; }
+  .lg-eye svg { width: 20px; height: 20px; }
+  .lg-submit { height: 50px; font-size: 15px; gap: 8px; }
+  .lg-submit svg { width: 18px; height: 18px; }
+  .lg-or { font-size: 11.5px; gap: 8px; margin: 18px 0 12px; }
+  .lg-page .lg-daftar { height: 48px; font-size: 14px; }
+  .lg-page .lg-back { font-size: 12.5px; gap: 8px; margin-top: 22px; }
+  .lg-back svg { width: 16px; height: 16px; }
+  .lg-leaf-tr { width: 34vw; }
+  .lg-leaf-br { width: 24vw; }
+  .lg-alert { font-size: 12px; padding: 10px 12px; border-radius: 14px; }
+}
+
+@media (max-width: 380px) {
+  .lg-logo-text strong { font-size: 19px; }
+  .lg-logo-img { width: 40px; }
+  .lg-content { margin-left: 24px; margin-right: 10px; }
+  .lg-field input { font-size: 12.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lg-submit, .lg-daftar, .lg-field { transition: none; }
+}
