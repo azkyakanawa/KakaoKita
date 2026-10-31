@@ -3,14 +3,13 @@ import './landing.css';
 import LandingNavbar from '@/components/landing/LandingNavbar';
 import InstallBanner from '@/components/landing/InstallBanner';
 import LandingImage from '@/components/landing/LandingImage';
-import Sparkline from '@/components/landing/Sparkline';
+import HargaCard from '@/components/landing/HargaCard';
 import {
-  IconBars, IconPlay, IconArrow, IconTrend, IconUsers, IconMailFill, IconPhone, IconPin,
+  IconBars, IconPlay, IconArrow, IconUsers, IconMailFill, IconPhone, IconPin,
   IconCoins, IconSprout, IconGlobe, IconMail, IconLeaf,
 } from '@/components/landing/Icons';
 
 // ====== ISI YANG BISA DIUBAH DENGAN MUDAH ======
-const HARGA = { nilai: 'Rp 52.000', satuan: '/kg', naik: '+2.5%' };
 const KONTAK = {
   telepon: '+62 812 3456 7890',
   email: 'kakaokita@gmail.com',
@@ -60,15 +59,7 @@ export default function Landing() {
 
       {/* ================= KARTU RINGKAS ================= */}
       <section className="lp-stats" aria-label="Ringkasan">
-        <article className="lp-card lp-stat lp-stat-harga">
-          <span className="lp-circle"><IconTrend /></span>
-          <div className="lp-stat-body">
-            <h3>Harga Kakao Hari Ini</h3>
-            <p className="lp-price">{HARGA.nilai} <small>{HARGA.satuan}</small></p>
-            <p className="lp-up"><span aria-hidden="true">▲</span> {HARGA.naik} dari kemarin</p>
-          </div>
-          <Sparkline className="lp-spark" />
-        </article>
+        <HargaCard />
 
         <article className="lp-card lp-stat lp-stat-fitur" id="fitur">
           <LandingImage file="daun-fitur.png" className="lp-stat-leaf" decor />

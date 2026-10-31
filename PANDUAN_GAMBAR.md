@@ -40,10 +40,7 @@ Nama file huruf kecil semua; ekstensi harus sama persis (`.png` atau `.jpg`).
 Ubah nama file di `src/app/page.js`, contoh: `file="hero-bg.jpg"` menjadi `file="hero-bg.webp"`.
 
 ## Mengubah teks dan data
-Di bagian atas `src/app/page.js`:
-- `HARGA`: angka harga, satuan, dan persen kenaikan pada kartu "Harga Kakao Hari Ini".
-- `KONTAK`: telepon, email, dan alamat.
-
-Catatan: angka harga di landing masih contoh tetap (Rp 52.000). Tabel `price_entries`
-hanya bisa dibaca setelah login (RLS), jadi landing tidak bisa mengambilnya otomatis.
-Jika nanti ingin harga hidup di landing, perlu policy baca publik atau tabel ringkasan khusus.
+- Kontak (telepon, email, alamat): konstanta `KONTAK` di bagian atas `src/app/page.js`.
+- Kartu "Harga Kakao Hari Ini" otomatis memakai harga **lokal, kering** terbaru yang diinput admin
+  di menu Harga. Persen naik/turun dihitung dari harga pada tanggal sebelumnya.
+  Wajib menjalankan `supabase/landing_harga.sql` sekali di Supabase SQL Editor.
