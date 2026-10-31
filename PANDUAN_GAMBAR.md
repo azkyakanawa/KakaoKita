@@ -65,3 +65,7 @@ Mengubah posisi fokus foto: di `src/app/masuk/masuk.css` ubah `object-position` 
 Memakai gambar yang sama dengan halaman Masuk (`login-foto.jpg`, `login-daun-*.png`, `logo.png`).
 Jika ingin foto yang berbeda untuk Daftar, simpan sebagai `daftar-foto.jpg` di `public/images/landing/`.
 Jika file itu tidak ada, halaman Daftar otomatis memakai `login-foto.jpg`.
+
+## Dashboard petani dan lahan
+Foto lahan TIDAK ditaruh di folder ini. Admin mengunggahnya langsung lewat halaman
+Admin > Anggota > (pilih petani) > Tambah lahan. Foto tersimpan di Supabase Storage (bucket "lahan").

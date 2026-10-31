@@ -185,3 +185,22 @@
 @media (prefers-reduced-motion: reduce) {
   .ad-root .btn, .ad-menu-item, .ad-chevron { transition: none; }
 }
+
+/* ---------------- Anggota & lahan ---------------- */
+.ad-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.ad-head .btn { margin-top: 6px; }
+.ad-head-sub { align-items: center; margin: 8px 0 14px; }
+.ad-head-sub .btn { margin-top: 0; }
+.ad-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.ad-root .ad-link { color: var(--ad-ink); }
+.ad-root .ad-link:hover { color: var(--ad-brown); text-decoration: underline; }
+.ad-lahan { display: grid; grid-template-columns: 170px minmax(0, 1fr) auto; gap: 22px; align-items: center; }
+.ad-lahan-foto { width: 170px; height: 110px; border-radius: 18px; overflow: hidden; background: var(--ad-peach); display: grid; place-items: center; color: var(--ad-brown); font-size: 40px; }
+.ad-lahan-foto img { width: 100%; height: 100%; object-fit: cover; }
+.ad-lahan-info h3 { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+.ad-lahan-info p { margin: 0 0 4px; font-size: 15px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.ad-mini { width: 16px; height: 16px; color: var(--ad-brown); flex: none; }
+@media (max-width: 760px) {
+  .ad-lahan { grid-template-columns: 1fr; }
+  .ad-lahan-foto { width: 100%; height: 160px; }
+}
