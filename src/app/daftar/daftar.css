@@ -1,0 +1,23 @@
+/* Penyesuaian halaman Daftar (gaya dasar ada di masuk/masuk.css) */
+.lg-reg .lg-content { padding-top: 36px; }
+.lg-reg .lg-title { font-size: clamp(48px, 5vw, 86px); }
+.lg-page.lg-reg .lg-sub { margin: clamp(14px, 2vh, 26px) 0 clamp(22px, 3.2vh, 40px); }
+.lg-reg .lg-form { gap: clamp(12px, 2vh, 20px); }
+.lg-reg .lg-field { height: clamp(50px, 7.2vh, 70px); }
+.lg-reg .lg-submit { height: clamp(52px, 7.2vh, 70px); }
+.lg-reg .lg-or { margin: clamp(16px, 2.6vh, 28px) 0 6px; font-size: clamp(15px, 1.3vw, 22px); }
+.lg-page.lg-reg .lg-login-link {
+  display: block; text-align: center; color: #3f7a1f; font-weight: 700; font-size: clamp(17px, 1.4vw, 23px); padding: 6px 0;
+}
+.lg-page.lg-reg .lg-login-link:hover { text-decoration: underline; }
+.lg-reg .lg-leaf-tr { width: clamp(130px, 15vw, 260px); }
+.lg-reg .lg-leaf-br { width: clamp(80px, 9vw, 160px); }
+
+@media (max-width: 760px) {
+  .lg-reg .lg-content { padding-top: clamp(110px, 20vh, 190px); padding-bottom: 100px; }
+  .lg-reg .lg-title { font-size: clamp(34px, 9.4vw, 48px); }
+  .lg-page.lg-reg .lg-sub { font-size: 12px; margin: 12px 0 20px; }
+  .lg-reg .lg-field, .lg-reg .lg-submit { height: 48px; }
+  .lg-reg .lg-or { font-size: 12px; margin: 16px 0 4px; }
+  .lg-page.lg-reg .lg-login-link { font-size: 14px; }
+}

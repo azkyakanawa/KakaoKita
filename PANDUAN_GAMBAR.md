@@ -59,3 +59,9 @@ Letakkan juga di `public/images/landing/`:
 
 Mengubah liukan foto: di `src/app/masuk/page.js` cari `<svg className="lg-edge"` lalu ubah angka pada `d="..."`.
 Mengubah posisi fokus foto: di `src/app/masuk/masuk.css` ubah `object-position` pada `.lg-photo-img` (misalnya `30% center`).
+
+## Halaman Daftar (/daftar)
+
+Memakai gambar yang sama dengan halaman Masuk (`login-foto.jpg`, `login-daun-*.png`, `logo.png`).
+Jika ingin foto yang berbeda untuk Daftar, simpan sebagai `daftar-foto.jpg` di `public/images/landing/`.
+Jika file itu tidak ada, halaman Daftar otomatis memakai `login-foto.jpg`.
