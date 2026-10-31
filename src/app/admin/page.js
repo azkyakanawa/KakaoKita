@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import { rupiah, angka, tgl } from '@/lib/format';
+import { AICalendar, AIMegaphone, AICalc, AIArrow } from '@/components/admin/AdminIcons';
 
 export default function AdminRingkasan() {
   const [stat, setStat] = useState({ petani: 0, totalKg: 0, lokal: null, tujuan: null });
@@ -32,25 +33,39 @@ export default function AdminRingkasan() {
     <>
       <h1>Ringkasan Koperasi</h1>
       {msg && <div className="alert">{msg}</div>}
-      <div className="grid cols-3">
-        <div className="card"><div className="muted">Petani aktif</div><div className="stat">{angka(stat.petani)}</div></div>
-        <div className="card"><div className="muted">Stok panen tercatat</div><div className="stat">{angka(stat.totalKg, 1)} kg</div></div>
-        <div className="card">
-          <div className="muted">Harga lokal terbaru (kering)</div>
-          <div className="stat">{stat.lokal ? rupiah(stat.lokal.harga_per_kg) : '-'}</div>
-          {stat.lokal && <div className="muted">{tgl(stat.lokal.tanggal)}</div>}
+
+      <section className="ad-stats" aria-label="Ringkasan angka">
+        <article className="ad-stat">
+          <h2>Petani Aktif</h2>
+          <p className="ad-stat-val">{angka(stat.petani)}</p>
+        </article>
+
+        <article className="ad-stat">
+          <h2>Stok Panen Tercatat</h2>
+          <p className="ad-stat-val">{angka(stat.totalKg, 1)} kg</p>
+        </article>
+
+        <article className="ad-stat">
+          <h2>Harga Lokal Terbaru (Kering)</h2>
+          <p className="ad-stat-val">{stat.lokal ? rupiah(stat.lokal.harga_per_kg) : '-'}</p>
+          {stat.lokal && <p className="ad-stat-date"><AICalendar />{tgl(stat.lokal.tanggal)}</p>}
+        </article>
+
+        <article className="ad-stat">
+          <h2>Harga Tujuan (Kering)</h2>
+          <p className="ad-stat-val">{stat.tujuan ? rupiah(stat.tujuan.harga_per_kg) : '-'}</p>
+          {stat.tujuan && <p className="ad-stat-date"><AICalendar />{tgl(stat.tujuan.tanggal)}</p>}
+        </article>
+      </section>
+
+      <section className="ad-start">
+        <span className="ad-start-icon"><AIMegaphone /></span>
+        <div>
+          <h3>Mulai dari sini</h3>
+          <p>Catat panen anggota, perbarui harga, lalu gunakan Simulasi Jual untuk menilai apakah menjual bersama lebih menguntungkan.</p>
+          <Link href="/admin/simulasi" className="btn ad-start-btn"><AICalc /><span>Buka Simulasi Jual</span><AIArrow /></Link>
         </div>
-        <div className="card">
-          <div className="muted">Harga tujuan terbaru (kering)</div>
-          <div className="stat">{stat.tujuan ? rupiah(stat.tujuan.harga_per_kg) : '-'}</div>
-          {stat.tujuan && <div className="muted">{tgl(stat.tujuan.tanggal)}</div>}
-        </div>
-      </div>
-      <div className="card">
-        <h3>Mulai dari sini</h3>
-        <p>Catat panen anggota, perbarui harga, lalu gunakan Simulasi Jual untuk menilai apakah menjual bersama lebih menguntungkan.</p>
-        <Link href="/admin/simulasi" className="btn">Buka Simulasi Jual</Link>
-      </div>
+      </section>
     </>
   );
 }
