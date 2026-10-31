@@ -22,7 +22,7 @@ export default function DaftarPage() {
     }
     setLoading(true);
     const { data, error } = await supabase.auth.signUp({
-      email: form.email,
+      email: form.email.trim().toLowerCase(),
       password: form.password,
       options: { data: { nama: form.nama, kontak: form.kontak } },
     });
@@ -32,9 +32,10 @@ export default function DaftarPage() {
       return;
     }
     if (data.session) {
-      router.replace('/petani');
+      await supabase.auth.signOut();
+      router.replace('/masuk?daftar=1');
     } else {
-      setOk('Pendaftaran berhasil. Cek email untuk konfirmasi, lalu masuk.');
+      router.replace('/masuk?daftar=konfirmasi');
     }
   }
 
