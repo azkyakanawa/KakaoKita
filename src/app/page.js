@@ -11,9 +11,9 @@ import {
 
 // ====== ISI YANG BISA DIUBAH DENGAN MUDAH ======
 const KONTAK = {
-  telepon: '+62 812 3456 7890',
+  telepon: '+62895403830065',
   email: 'kakaokita@gmail.com',
-  alamat: ['Jl. Pertanian No. 123,', 'Bogor, Jawa Barat'],
+  alamat: 'Jl. Pembangunan, Harapan Jaya, Kec. Sukarame, Kota Bandar Lampung, Lampung 35131',
 };
 // ===============================================
 
@@ -23,7 +23,7 @@ export default function Landing() {
       {/* ================= HERO ================= */}
       <section className="lp-hero">
         <div className="lp-hero-bg" aria-hidden="true">
-          <LandingImage file="hero-bg.jpg" className="lp-fill" decor />
+          <LandingImage file="hero-bg.jpg" className="lp-fill lp-hero-img" decor />
         </div>
         <LandingImage file="daun-kiri-atas.png" className="lp-deco lp-deco-a" decor />
         <LandingImage file="daun-kiri-tengah.png" className="lp-deco lp-deco-b" decor />
@@ -49,10 +49,10 @@ export default function Landing() {
           </div>
 
           <div className="lp-hero-pods lp-only-desktop" aria-hidden="true">
-            <LandingImage file="hero-kakao.png" className="lp-contain" />
+            <LandingImage file="hero-kakao.png" className="lp-contain" decor />
           </div>
           <div className="lp-hero-pods lp-only-mobile" aria-hidden="true">
-            <LandingImage file="hero-kakao-mobile.png" className="lp-contain" />
+            <LandingImage file="hero-kakao-mobile.png" className="lp-contain" decor />
           </div>
         </div>
       </section>
@@ -140,9 +140,9 @@ export default function Landing() {
             <div className="lp-contact-body">
               <p>Kami siap membantu Anda. Hubungi kami melalui:</p>
               <ul>
-                <li><IconPhone /><span>{KONTAK.telepon}</span></li>
+                <li><IconPhone /><a href={`tel:${KONTAK.telepon}`}>{KONTAK.telepon}</a></li>
                 <li><IconMailFill /><a href={`mailto:${KONTAK.email}`}>{KONTAK.email}</a></li>
-                <li><IconPin /><span>{KONTAK.alamat[0]}<br />{KONTAK.alamat[1]}</span></li>
+                <li><IconPin /><span>{KONTAK.alamat}</span></li>
               </ul>
               <LandingImage file="kontak-headset.png" className="lp-contact-art" decor />
             </div>
@@ -155,9 +155,9 @@ export default function Landing() {
               <h2 className="lp-h2">Hubungi <span>Kami</span></h2>
               <p>Kami siap membantu Anda. Hubungi kami melalui:</p>
               <ul>
-                <li><IconPhone /><span>{KONTAK.telepon}</span></li>
+                <li><IconPhone /><a href={`tel:${KONTAK.telepon}`}>{KONTAK.telepon}</a></li>
                 <li><IconMailFill /><a href={`mailto:${KONTAK.email}`}>{KONTAK.email}</a></li>
-                <li><IconPin /><span>{KONTAK.alamat[0]} {KONTAK.alamat[1]}</span></li>
+                <li><IconPin /><span>{KONTAK.alamat}</span></li>
               </ul>
             </div>
             <div className="lp-contact-mob-art">

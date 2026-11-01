@@ -64,7 +64,12 @@ export default function MasukPage() {
     <main className="lg-page">
       {/* ===== Sisi foto (kiri) ===== */}
       <div className="lg-photo" aria-hidden="true">
-        <LandingImage file="login-foto.jpg" className="lg-photo-img" decor />
+        <LandingImage file="login-foto.jpg" className="lg-photo-img lg-img-d" decor lazy />
+        {/* Versi potret untuk ponsel (opsional). Jika file belum ada, otomatis memakai login-foto.jpg */}
+        <LandingImage
+          file="login-foto-mobile.jpg" className="lg-photo-img lg-img-m" decor lazy
+          fallback={<LandingImage file="login-foto.jpg" className="lg-photo-img" decor lazy />}
+        />
       </div>
       <div className="lg-shade" aria-hidden="true" />
 

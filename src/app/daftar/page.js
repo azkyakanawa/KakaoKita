@@ -46,12 +46,15 @@ export default function DaftarPage() {
     <main className="lg-page lg-reg">
       {/* ===== Sisi foto (kiri) ===== */}
       <div className="lg-photo" aria-hidden="true">
-        {/* Pakai daftar-foto.jpg bila ada; jika belum, otomatis memakai login-foto.jpg */}
+        {/* Desktop: daftar-foto.jpg bila ada, jika belum otomatis login-foto.jpg */}
         <LandingImage
-          file="daftar-foto.jpg"
-          className="lg-photo-img"
-          decor
-          fallback={<LandingImage file="login-foto.jpg" className="lg-photo-img" decor />}
+          file="daftar-foto.jpg" className="lg-photo-img lg-img-d" decor lazy
+          fallback={<LandingImage file="login-foto.jpg" className="lg-photo-img" decor lazy />}
+        />
+        {/* Ponsel: versi potret login-foto-mobile.jpg (opsional), jika belum ada memakai login-foto.jpg */}
+        <LandingImage
+          file="login-foto-mobile.jpg" className="lg-photo-img lg-img-m" decor lazy
+          fallback={<LandingImage file="login-foto.jpg" className="lg-photo-img" decor lazy />}
         />
       </div>
       <div className="lg-shade" aria-hidden="true" />

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 // - Jika file belum ada dan ada `fallback`, tampil fallback tersebut.
 // - Jika belum ada dan `decor` (hiasan), tidak tampil apa-apa.
 // - Jika belum ada (mode dev), tampil kotak putus-putus berisi nama file agar mudah dicari.
-export default function LandingImage({ file, alt = '', className = '', fallback = null, decor = false }) {
+export default function LandingImage({ file, alt = '', className = '', fallback = null, decor = false, lazy = false }) {
   const [failed, setFailed] = useState(false);
   const ref = useRef(null);
   const src = `/images/landing/${file}`;
@@ -27,5 +27,5 @@ export default function LandingImage({ file, alt = '', className = '', fallback 
     );
   }
   // eslint-disable-next-line @next/next/no-img-element
-  return <img ref={ref} src={src} alt={alt} className={className} onError={() => setFailed(true)} draggable={false} />;
+  return <img ref={ref} src={src} alt={alt} className={className} onError={() => setFailed(true)} draggable={false} loading={lazy ? 'lazy' : undefined} />;
 }
