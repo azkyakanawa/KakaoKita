@@ -1,6 +1,6 @@
 // Service worker KakaoKita: cache sederhana agar aplikasi ringan dan tetap terbuka
 // saat sinyal hilang. Permintaan ke Supabase (domain lain) tidak di-cache.
-const CACHE = 'kakaokita-v1';
+const CACHE = 'kakaokita-v2';
 const PRECACHE = ['/offline.html', '/icons/icon-192.png', '/icons/icon-512.png'];
 
 self.addEventListener('install', (event) => {
